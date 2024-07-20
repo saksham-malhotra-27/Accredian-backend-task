@@ -24,7 +24,7 @@ router.post('/refer', async (req, res) => {
 
     const referrer = await prisma.user.findUnique({
       where: { email: referrerEmail },
-      select: { referCode: true, referrals:true },
+      select: { referCode: true },
     });
 
     if (!referrer) {
@@ -80,9 +80,10 @@ router.post('/refer', async (req, res) => {
   } catch (err) {
     if(err.code==='P2002'){
       return res.status(403).json({error:'Can send to a person only once', success:false})
-    }
+    } else {
+      
     return res.status(500).json({ error: 'Internal server error', success: false });
-  }
+ } }
 });
 
 router.get('/getcode', async(req, res)=>{
