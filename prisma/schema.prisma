@@ -12,7 +12,8 @@ model Referral {
   referrerEmail String
   refereeEmail  String   
   createdAt     DateTime @default(now())
-  refercode     String @unique
+  refercode     String 
+  @@unique([refercode, refereeEmail, referrerEmail])
 }
 
 model User {
