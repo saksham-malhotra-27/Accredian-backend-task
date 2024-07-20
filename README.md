@@ -22,6 +22,10 @@ git clone https://github.com/saksham-malhotra-27/Accredian-backend-task
 cd Accredian-backend-task
 npm i
 ```
+To run the backend
+```
+npm run dev
+```
 
 ## Configure Environment Variables
 Create a .env file in the root directory and add the necessary environment variables as written in the .env.sample file.
