@@ -9,16 +9,19 @@ datasource db {
 
 model Referral {
   id            Int      @id @default(autoincrement())
-  referrerEmail String
+  referrerEmail String  
+  referrer  User @relation(fields: [referrerEmail], references: [email])
   refereeEmail  String   
   createdAt     DateTime @default(now())
   refercode     String 
   @@unique([refercode, refereeEmail, referrerEmail])
+  
 }
 
 model User {
   id        Int    @id @default(autoincrement())
   email     String  @unique
+  referrals  Referral[]
   password  String
   referCode String @unique
 }
