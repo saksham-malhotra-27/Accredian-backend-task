@@ -46,8 +46,20 @@ router.post('/refer', async (req, res) => {
     const mailOptions = {
       from: process.env.USER,
       to: refereeEmail,
-      subject: 'Referral Invitation',
-      text: `You have been referred! Use this referral code to join: ${referrer.referCode}`,
+      subject: 'Referral Invitation for accredian (testing)',
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #333;">
+          <h1 style="color: #4A90E2;">You've Been Referred!</h1>
+          <p>Hi there,</p>
+          <p>We're excited to let you know that you've been referred to join <strong>accredian</strong>.</p>
+          <p>Use the referral code below to sign up and enjoy the benefits:</p>
+          <p style="font-size: 20px; font-weight: bold; background-color: #f9f9f9; padding: 10px; border-radius: 5px; border: 1px solid #ddd; text-align: center;">
+            ${referrer.referCode}
+          </p>
+          <p>If you have any questions, feel free to reply to this email.</p>
+          <p>Best regards,<br>The accredian Team</p>
+        </div>
+      `,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
