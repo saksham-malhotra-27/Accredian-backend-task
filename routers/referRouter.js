@@ -18,6 +18,9 @@ router.post('/refer', async (req, res) => {
     
     const { refereeEmail } = result.data;
     const referrerEmail = req.user;
+    if(refereeEmail === referrerEmail){
+      return res.status(406).json({error:"cannot refer yourself", success:false});
+    }
 
     const referrer = await prisma.user.findUnique({
       where: { email: referrerEmail },
@@ -27,6 +30,8 @@ router.post('/refer', async (req, res) => {
     if (!referrer) {
       return res.status(404).json({ error: 'Referrer not found', success: false });
     }
+
+    
 
 
     const referral = await prisma.referral.create({
