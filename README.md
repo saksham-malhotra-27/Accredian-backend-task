@@ -1,4 +1,7 @@
 # Accredian Backend Task
+## Auto Emailing
+![image](https://github.com/user-attachments/assets/a84daac2-32a7-4c67-bb47-a1ada98cf0dc)
+
 ## Overview
 The Accredian-backend-task project implements a backend system for an authorized referral system. Users can send referrals to other emails after logging in, while ensuring the integrity and uniqueness of the referral process. The system prevents users from sending referrals to themselves and from repeatedly sending referrals to the same recipient.
 
