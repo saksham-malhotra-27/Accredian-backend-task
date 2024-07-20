@@ -28,11 +28,13 @@ router.post('/login', async (req, res)=>{
           return res.status(200).json({msg:"logged in", token, success:true})
           }
           else {
+            const referCode = await generateUniqueReferCode();
+            console.log(referCode)
             const newUser = await prisma.user.create({
               data:{
                 email: result.data.email,
                 password: result.data.password,
-                referCode: generateUniqueReferCode()
+                referCode: referCode
               }
             })
             const token = jwt.sign(newUser.email, process.env.SECRET);
